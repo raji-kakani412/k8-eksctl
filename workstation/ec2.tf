@@ -30,11 +30,12 @@ resource "aws_security_group" "allow_all_k8"{
 
 resource "aws_instance" "workspace" {
 
-  ami = "ami-09c813fb71547fc4f"
+  ami = data.aws_ami.joindevops.id
   instance_type = "t3.micro"
   vpc_security_group_ids = [aws_security_group.allow_all_k8.id]
   tags = {
     Name = "workspace"
   }
-   user_data = file("userdata.sh")
+   user_data = "${file("userdata.sh")}"
+
 }
