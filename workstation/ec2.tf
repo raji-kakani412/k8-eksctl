@@ -36,6 +36,6 @@ resource "aws_instance" "workspace" {
   tags = {
     Name = "workspace"
   }
-   user_data = "${file("userdata.sh")}"
+  user_data = file("userdata.sh")
 
 }
